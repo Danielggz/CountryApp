@@ -10,6 +10,18 @@ app.get("/api", (req, res) => {
   res.json({ message: "Hello from server!" });
 });
 
+app.get("/getCountry", (req, res) => {
+  var url = "https://restcountries.com/v3.1/name/Spain";
+  $.ajax({
+      url: url,
+      contentType: "application/json",
+      dataType: 'json',
+      success: function(result){
+          console.log(result);
+      }
+  })
+});
+
 // All other GET requests not handled before will return our React app
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));

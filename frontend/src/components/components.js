@@ -7,10 +7,17 @@ const CountryForm = () => {
     const handleCountry = (event) => {
         setCountry(event.target.value);
     };
+
+    const handleFetchData = async () => {
+      const response = await fetch("/getCountry/?countryName=" + {country}.country)
+      console.log({country})
+      const data = await response.json();
+      countryInfoDisplay(data.countryInfo);
+  }
   
     const handleSubmit = (event) => {
       event.preventDefault();
-      
+      handleFetchData();
     };
   
     return (
@@ -35,5 +42,11 @@ const CountryForm = () => {
       </form>
     );
   };
+
+  
+function countryInfoDisplay(country)
+{
+  console.log(country);
+}
   
   export {CountryForm};

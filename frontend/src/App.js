@@ -1,5 +1,6 @@
 import React from "react";
-import {CountryForm} from "./components/components";
+import {CountryForm} from "./components/countryForm";
+
 import './App.css';
 
 function App() {

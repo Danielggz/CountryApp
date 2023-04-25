@@ -6,10 +6,6 @@ const app = express();
 
 app.use(express.static(path.resolve(__dirname, '../client/build')));
 
-app.get("/api", (req, res) => {
-  res.json({ message: "Hello from server!" });
-});
-
 app.get("/getCountry", (req, res) => {
   var url = "https://restcountries.com/v3.1/name/" + req.query.countryName;
 

@@ -1,0 +1,11 @@
+#btnSubmit{
+    margin-top:20px;
+}
+
+#countryInfo{
+    margin-top:50px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    
+}

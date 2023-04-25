@@ -1,5 +1,4 @@
 import React from "react";
-import {CountryInfo} from "./countryInfo";
 import './styles.css';
 
 const CountryForm = () => {
@@ -33,6 +32,9 @@ const CountryForm = () => {
       countryInfo.capital = data.countryInfo.capital[0];
       countryInfo.population = data.countryInfo.population;
       countryInfo.languages = data.countryInfo.languages;
+
+      console.log(countryInfo);
+      
   }
   
     const handleSubmit = (event) => {
@@ -59,10 +61,34 @@ const CountryForm = () => {
                   </div>
               </div>
           </div>
-          <button className="btn btn-primary" type="submit">Submit</button>
+          <button id="btnSubmit" className="btn btn-primary" type="submit">Submit</button>
         </form>
         <div id="countryInfo">
-          <CountryInfo data={countryInfo}></CountryInfo>
+          <div>
+            <img className="imgCountry" src={countryInfo.flagInfo.png} alt={countryInfo.flagInfo.alt} ></img>
+          </div>
+          <div className="infoName">
+            <div className="countryName">
+              {countryInfo.name}
+            </div>
+            <div className="officialName">
+              Official: {countryInfo.officialName}
+            </div>
+          </div>
+          <div className="otherInfo">
+            <div className="capitalCity row">
+              <span className="col-sm-8">Capital city:</span> <span className="col-sm-4">{countryInfo.capital}</span>
+            </div>
+            <div className="population row">
+              <span className="col-sm-6">Population:</span> <span className="col-sm-6">{countryInfo.population}</span>
+            </div>
+            <div className="region row">
+              <span className="col-sm-6">Region: </span> <span className="col-sm-6">{countryInfo.region}</span>
+            </div>
+            <div>
+              
+            </div>
+          </div>
         </div>
       </div>
     );

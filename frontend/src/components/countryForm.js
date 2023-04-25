@@ -5,7 +5,16 @@ import './styles.css';
 const CountryForm = () => {
     const [country, setCountry] = React.useState('');
     const [countryInfo, setCountryInfo] = React.useState({
-      name: ''
+      name: '',
+      officialName: '',
+      flagInfo: {
+        alt: '',
+        png: ''
+      },
+      region: '',
+      capital: '',
+      population: 0,
+      languages: []
     });
   
     const handleCountry = (event) => {
@@ -15,8 +24,15 @@ const CountryForm = () => {
     const handleFetchData = async () => {
       const response = await fetch("/getCountry/?countryName=" + {country}.country)
       const data = await response.json();
+
       countryInfo.name = data.countryInfo.name['common'];
-      console.log(countryInfo);
+      countryInfo.officialName = data.countryInfo.name['official'];
+      countryInfo.flagInfo['alt'] = data.countryInfo.flags['alt'];
+      countryInfo.flagInfo['png'] = data.countryInfo.flags['png'];
+      countryInfo.region = data.countryInfo.region;
+      countryInfo.capital = data.countryInfo.capital[0];
+      countryInfo.population = data.countryInfo.population;
+      countryInfo.languages = data.countryInfo.languages;
   }
   
     const handleSubmit = (event) => {
@@ -45,17 +61,11 @@ const CountryForm = () => {
           </div>
           <button className="btn btn-primary" type="submit">Submit</button>
         </form>
-        <div>
-          {/* <p>{!countryInfo ? "Loading..." : countryInfo}</p> */}
+        <div id="countryInfo">
+          <CountryInfo data={countryInfo}></CountryInfo>
         </div>
       </div>
     );
   };
-
-  
-function countryInfoDisplay(country)
-{
-  console.log(country);
-}
   
   export {CountryForm};

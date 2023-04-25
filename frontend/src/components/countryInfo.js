@@ -1,15 +1,14 @@
 import React from "react";
+import { CountryForm } from "./countryForm";
 import './styles.css';
 
-const CountryInfo = () => {
-    const [countryInfo, setCountryInfo] = React.useState('');
-  
-    const handleCountry = (event) => {
-        setCountryInfo(event.target.value);
-    };
+const CountryInfo = ({data}) => {
+    console.log({data});
   
     return (
-        <div> Info! </div>
+        <div className="flagInfo">
+            <img className="" alt="" ></img>
+        </div>
     );
   };
   
